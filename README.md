@@ -1,4 +1,9 @@
 # Interview-information-of-web
+>说明: 本文档来自[segmentfault-江文艺先生](https://segmentfault.com/a/1190000013857582) ,如有侵权请联系删除.
+>
+>(**此资料还在编辑中...**)
+>
+>后续会在此基础上增删改查,并附上个人见解.
 ***
 ## 常见的前端面试知识点
 ## 1.HTML
