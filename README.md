@@ -108,6 +108,70 @@
 46. websocket的工作原理和机制。
 47. 手指点击可以触控的屏幕时，是什么事件？ 什么是函数柯里化？以及说一下JS的API有哪些应用到了函数柯里化的实现？(函数柯里化一些了解，以及在函数式编程的应用，- 最后说了一下JS中bind函数和数组的reduce方法用到了函数柯里化。)
 48. JS代码调试-
+49. 什么是MVC开发设计模型?
+```
+$(function(){
+	//初始化MVC对象
+	var MVC = MVC || {};
+	//初始化MVC数据模型层
+	MVC.model = function  () {
+		//内部数据对象
+		var M = {};
+		//服务器端获取的数据，通常通过Ajax并获取并存储，后面的案例为简化实现，直接作为同步数据
+		//写在页面中，减少服务器端异步请求操作
+		M.data = {};
+		//配置数据，页面加载时即提供
+		M.conf = {};
+		//返回数据模型层对象操作方法
+		return {
+			//获取服务器端数据
+			getData : function (m) {
+				//根据数据字段获取数据
+				return M.data(m);
+			},
+			//获取配置数据
+			getConf : function (c) {
+				//根据配置数据字段获取配置数据
+				return M.conf(c);
+			},
+			//设置服务器端数据
+			setData : function (m, v) {
+				//设置数据字段m对应的数据v
+				M.data[m] =v;
+				return this;
+			},
+			//设置配置数据
+			setConf : function (c, v) {
+				//设置配置数据字段c对应的配置数据v
+				M.conf[c] = v;
+				return this;
+			}
+		}
+	}();
+	//初始化MVC视图层
+	MVC.view = function () {
+		//模型数据层对象操作方法引用
+		var M = MVC.model;
+		//内部视图创建方法对象
+		var  V = {};
+		//获取视图接口方法
+		return function (v) {
+			//根据视图名称返回视图
+			V[v]();
+		}
+		
+	}();
+	//初始化MVC控制器层
+	MVC.ctrl = function () {
+		//模型数据层对象操作方法引用
+		var M = MVC.model;
+		//视图数据层对象操作方法引用
+		var V = MVC.view;
+		//控制器创建方法对象
+		var C = {};
+	}();
+});
+```
 
 ## 4.ES6
 1. 谈一谈 promise
